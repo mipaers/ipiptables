@@ -13,7 +13,7 @@ iptables_command="iptables -t nat -A PREROUTING -p tcp --dport $original_port -j
 touch /root/iptables_rules
 iptables-save > /root/iptables_rules
 echo "pre-up iptables-restore < /root/iptables_rules" | tee -a /etc/network/interfaces
-echo "iptables规则已保存并添加到网络接口配置文件。"
-# 结束脚本
+echo "iptables规则已保存在root文件夹下iptables_rules文件内。"
+read -p "已完成！回车键退出脚本"
 exit 0
 
