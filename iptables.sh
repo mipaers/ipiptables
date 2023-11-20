@@ -1,8 +1,8 @@
 #!/bin/bash
-echo "此脚本的作用是实现端口转发后重启失效的问题。"
-echo "请输入需要转发的端口："
+echo -e "\e[31m此脚本的作用是实现端口转发后重启失效的问题。\e[0m"
+echo -e "\e[32m请输入需要转发的端口：\e[32m"
 read original_port
-echo "请输入转发到哪个端口："
+echo "\e[32m请输入转发到哪个端口：\e[0m"
 read replacement_port
 iptables_command="iptables -t nat -A PREROUTING -p tcp --dport $original_port -j REDIRECT --to-port $replacement_port"
 touch /root/iptables_rules
