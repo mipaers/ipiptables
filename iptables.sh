@@ -4,7 +4,6 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 echo "此脚本的作用是实现端口转发后重启失效的问题。"
-read -p 
 read -p "请输入需要转发的端口："
 read original_port
 read -p "请输入转发到哪个端口："
