@@ -14,24 +14,15 @@ read -p "按 Enter 键继续..."
 touch /root/iptables_rules
 
 # 读取用户输入的原始端口号，进行输入验证
-while true; do
-    read -p "请输入需要转发的端口号: " original_port
-    if [[ $original_port =~ ^[0-9]+$ && $original_port -gt 0 && $original_port -lt 65536 ]]; then
-        break
-    else
-        echo "请输入有效的端口号（1-65535 的整数）。"
-    fi
-done
+    read -p "请输入需要转发的端口号: " 
+    read original_port
+   
 
 # 读取用户输入的替换端口号，进行输入验证
-while true; do
-    read -p "请输入转发到哪个端口: " replacement_port
-    if [[ $replacement_port =~ ^[0-9]+$ && $replacement_port -gt 0 && $replacement_port -lt 65536 ]]; then
-        break
-    else
-        echo "请输入有效的端口号（1-65535 的整数）。"
-    fi
-done
+
+    read -p "请输入转发到哪个端口: " 
+    read replacement_port
+    
 
 # 构建 iptables 命令，并替换端口号
 iptables_command="iptables -t nat -A PREROUTING -p tcp --dport $original_port -j REDIRECT --to-port $replacement_port"
